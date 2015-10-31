@@ -13,4 +13,4 @@ RUN apt-get update && apt-get install -y software-properties-common && \
 EXPOSE 5657
 USER root
 ENV PKCS11_DAEMON_SOCKET="tcp://0.0.0.0:5657"
-ENTRYPOINT [ "pkcs11-daemon /usr/lib/libsofthsm.so" ]
+ENTRYPOINT [ "pkcs11-daemon", "/usr/lib/libsofthsm.so" ]
