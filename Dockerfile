@@ -10,8 +10,7 @@ RUN git clone https://github.com/SUNET/pkcs11-proxy && \
 
 COPY key.pem /root/key.pem
 
-RUN echo "0:/var/lib/softhsm/slot0.db" >> /etc/softhsm/softhsm2.conf && \
-    mkdir /var/lib/softhsm/tokens && \
+RUN mkdir /var/lib/softhsm/tokens && \
     softhsm2-util --init-token --slot 0 --label key --pin 1234 --so-pin 0000 && \
     softhsm2-util --import /root/key.pem --slot 0 --label key --id BEEF --pin 1234
 
